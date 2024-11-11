@@ -12,6 +12,41 @@ img {
 }
 /*************** Menu ****************/
 
+/* STYLING AF "ASSETS" SIDE */
+
+.grafik {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+h1,
+h2,
+h3 {
+  margin-bottom: 20px; /* Læg til afstand under overskrifterne */
+}
+
+h2 {
+  margin-top: 20px; /* Hvis du vil have ekstra luft før h2-overskrifterne */
+  text-decoration: underline;
+}
+article {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px; /* Afstand mellem billederne */
+  margin-bottom: 40px; /* Afstand mellem sektioner */
+}
+
+.spil_elementer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 90%;
+}
+.ui_elementer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 90%;
+}
+
 #screen {
   width: 100%;
   aspect-ratio: 16/9;
@@ -32,6 +67,8 @@ img {
   position: absolute;
   top: 0;
   left: 0;
+  background-image: url(/assets/start_skaerm.svg);
+  background-size: cover;
   display: none;
 }
 
@@ -41,9 +78,20 @@ img {
   position: absolute;
   top: 0;
   left: 0;
+  background-image: url(/assets/game_over.svg);
+  background-size: cover;
   display: none;
 }
-
+#level_complete {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url(/assets/level_complete.svg);
+  background-size: cover;
+  display: none;
+}
 #game_background {
   width: 100%;
   height: 100%;
@@ -60,16 +108,102 @@ img {
   top: 0;
   left: 0;
 }
-#game_foreground {
+
+/* #game_foreground {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   pointer-events: none;
-  /* background-image HAR IKKE BILLEDE ENDNU */
+  background-size: cover;
+} */
+
+/* SPIL ELEMENTER */
+
+/* GODT ELEMENT */
+#god_ost_container {
+  position: absolute;
+  width: 15%;
+  aspect-ratio: 255/175;
+  /* top: 
+  left: */
+}
+#god_ost_sprite {
+  width: 100%;
+  height: 100%;
+  background-image: url(/assets/god_ost.svg);
   background-size: cover;
 }
+/* FALD NED ANIMATION */
+.falde-animation {
+  animation-name: faldeNed;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+@keyframes faldeNed {
+  100% {
+    translate: 0 1500%;
+  }
+}
+
+/* FORSVIND ANIMATION */
+.forsvind {
+  animation-name: forsvind_kf;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+  animation-delay: 2s; /* Forsinkelse på 2 sekunder */
+}
+@keyframes forsvind_kf {
+  100% {
+    opacity: 0; /* Gør elementet usynligt */
+  }
+}
+/* ONDT ELEMENT */
+#mug_ost_container {
+  position: absolute;
+  width: 15%;
+  aspect-ratio: 90/62;
+  /* top: 56%; */
+  left: 68%;
+}
+#mug_ost_sprite {
+  width: 100%;
+  height: 100%;
+  background-image: url(/assets/mug_ost.svg);
+  background-size: cover;
+  animation-name: faldeNed;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-delay: 1s; /* Forsinkelse til animationen */
+}
+@keyframes faldeNed {
+  100% {
+    translate: 0 1500%;
+  }
+}
+.forsvind {
+  animation-name: forsvind_kf;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+  animation-delay: 2s; /* Forsinkelse på 2 sekunder */
+}
+@keyframes forsvind_kf {
+  100% {
+    opacity: 0; /* Gør elementet usynligt */
+  }
+}
+#time_board {
+  width: 7%;
+  position: absolute;
+  aspect-ratio: 158/165;
+  background-image: url(/assets/ur.svg);
+  top: 10%;
+  left: 79%;
+  background-size: cover;
+}
+
+/* UI */
 #game_ui {
   width: 100%;
   height: 100%;
