@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="dPa3eCRp1KqCvTpyh3m8" name="Page-1">
-        <mxGraphModel dx="1549" dy="924" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1141" dy="681" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -12,7 +12,7 @@
                 <mxCell id="2" value="" style="ellipse;fillColor=#000000;strokeColor=none;" parent="1" vertex="1">
                     <mxGeometry x="460" width="30" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="25" value="startSpil" style="swimlane;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=37;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;rounded=1;absoluteArcSize=1;arcSize=25;" parent="1" vertex="1">
+                <mxCell id="25" value="startSpillet" style="swimlane;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=37;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;rounded=1;absoluteArcSize=1;arcSize=25;" parent="1" vertex="1">
                     <mxGeometry x="340" y="240" width="270" height="177" as="geometry"/>
                 </mxCell>
                 <mxCell id="26" value="Skjul andre skærme" style="fillColor=none;strokeColor=none;align=left;verticalAlign=middle;spacingLeft=5;" parent="25" vertex="1">
@@ -152,15 +152,18 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="88" value="stopSpillet" style="swimlane;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;rounded=1;absoluteArcSize=1;arcSize=50;" parent="1" vertex="1">
-                    <mxGeometry x="990" y="400" width="170" height="70" as="geometry"/>
+                    <mxGeometry x="990" y="400" width="170" height="90" as="geometry"/>
                 </mxCell>
                 <mxCell id="89" value="Fjern alle animationer" style="fillColor=none;strokeColor=none;align=left;verticalAlign=middle;spacingLeft=5;" parent="88" vertex="1">
                     <mxGeometry y="30" width="170" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="90" value="Fjern alle eventListerner-ere" style="fillColor=none;strokeColor=none;align=left;verticalAlign=middle;spacingLeft=5;" parent="88" vertex="1">
+                <mxCell id="119" value="Fjern alle animationer" style="fillColor=none;strokeColor=none;align=left;verticalAlign=middle;spacingLeft=5;" vertex="1" parent="88">
                     <mxGeometry y="50" width="170" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="91" value="[point &amp;gt; 10]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="90" target="92" edge="1">
+                <mxCell id="90" value="Fjern alle eventListerner-ere" style="fillColor=none;strokeColor=none;align=left;verticalAlign=middle;spacingLeft=5;" parent="88" vertex="1">
+                    <mxGeometry y="70" width="170" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="91" value="[point &amp;gt; 20]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="90" target="92" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1060" y="520" as="targetPoint"/>
                         <Array as="points">

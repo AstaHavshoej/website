@@ -283,16 +283,6 @@ article {
     translate: 0 1500%;
   }
 }
-/* .falde-animation {
-  animation-name: faldeNed;
-  animation-duration: 5s;
-  animation-iteration-count: infinite;
-}
-@keyframes faldeNed {
-  100% {
-    translate: 0 1500%;
-  }
-} */
 
 /* FORSVIND ANIMATION */
 .forsvind_good {
