@@ -12,6 +12,127 @@ img {
 }
 /*************** Menu ****************/
 
+/* BURGERMENU */
+header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: lightpink;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  background-color: lightpink;
+  padding: 25px;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+}
+.tekst_footer {
+  color: #d6c6a6;
+}
+.logo img {
+  width: 50px;
+  height: 50px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  margin-right: 20px;
+}
+
+.menu li:last-child {
+  margin-right: 0;
+}
+
+.menu a {
+  display: block;
+  padding: 10px;
+  color: #333333;
+  text-decoration: none;
+  transition: color 0.3s;
+  text-align: end;
+  background-color: orange;
+  border-radius: 10px;
+}
+
+.menu a:hover {
+  color: lightpink;
+}
+
+.burger {
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.burger .line {
+  width: 100%;
+  height: 2px;
+  background-color: #333333;
+  margin-bottom: 5px;
+  transition: 0.2s linear;
+}
+.burger {
+  display: none;
+}
+@media screen and (max-width: 800px) {
+  .menu {
+    display: none;
+  }
+  .burger {
+    display: block;
+  }
+  .burger.active .line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+    transition: 0.2s linear;
+  }
+
+  .burger.active .line:nth-child(2) {
+    opacity: 0;
+    transition: 0.15s linear;
+  }
+
+  .burger.active .line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+    transition: 0.2s linear;
+  }
+
+  nav.active .menu {
+    display: block;
+    background-color: #ffffff;
+    position: absolute;
+    top: 94px;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+
+  nav.active .menu li {
+    margin: 10px 20px;
+  }
+
+  nav.active .menu a {
+    font-size: 24px;
+  }
+}
+
 /* STYLING AF "ASSETS" SIDE */
 
 .grafik {
@@ -67,7 +188,7 @@ article {
   position: absolute;
   top: 0;
   left: 0;
-  background-image: url(/assets/start_skaerm.svg);
+  background-image: url(../assets/start_skaerm.svg);
   background-size: cover;
   display: none;
 }
@@ -78,7 +199,7 @@ article {
   position: absolute;
   top: 0;
   left: 0;
-  background-image: url(/assets/game_over.svg);
+  background-image: url(../assets/game_over.svg);
   background-size: cover;
   display: none;
 }
@@ -88,7 +209,7 @@ article {
   position: absolute;
   top: 0;
   left: 0;
-  background-image: url(/assets/level_complete.svg);
+  background-image: url(../assets/level_complete.svg);
   background-size: cover;
   display: none;
 }
@@ -132,33 +253,10 @@ article {
 #god_ost_sprite {
   width: 100%;
   height: 100%;
-  background-image: url(/assets/god_ost.svg);
+  background-image: url(../assets/god_ost.svg);
   background-size: cover;
 }
-/* FALD NED ANIMATION */
-.falde-animation {
-  animation-name: faldeNed;
-  animation-duration: 5s;
-  animation-iteration-count: infinite;
-}
-@keyframes faldeNed {
-  100% {
-    translate: 0 1500%;
-  }
-}
 
-/* FORSVIND ANIMATION */
-.forsvind {
-  animation-name: forsvind_kf;
-  animation-duration: 3s;
-  animation-iteration-count: 1;
-  animation-delay: 2s; /* Forsinkelse på 2 sekunder */
-}
-@keyframes forsvind_kf {
-  100% {
-    opacity: 0; /* Gør elementet usynligt */
-  }
-}
 /* ONDT ELEMENT */
 #mug_ost_container {
   position: absolute;
@@ -170,36 +268,71 @@ article {
 #mug_ost_sprite {
   width: 100%;
   height: 100%;
-  background-image: url(/assets/mug_ost.svg);
+  background-image: url(../assets/mug_ost.svg);
   background-size: cover;
+}
+/* FALD ANIMATION */
+.fald {
+  animation-name: fald_kf;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@keyframes fald_kf {
+  100% {
+    translate: 0 1500%;
+  }
+}
+/* .falde-animation {
   animation-name: faldeNed;
   animation-duration: 5s;
   animation-iteration-count: infinite;
-  animation-delay: 1s; /* Forsinkelse til animationen */
 }
 @keyframes faldeNed {
   100% {
     translate: 0 1500%;
   }
-}
-.forsvind {
-  animation-name: forsvind_kf;
-  animation-duration: 3s;
+} */
+
+/* FORSVIND ANIMATION */
+.forsvind_good {
+  animation-name: forsvind_good_kf;
+  animation-duration: 0.6s;
   animation-iteration-count: 1;
-  animation-delay: 2s; /* Forsinkelse på 2 sekunder */
+  animation-timing-function: linear;
 }
-@keyframes forsvind_kf {
+@keyframes forsvind_good_kf {
   100% {
-    opacity: 0; /* Gør elementet usynligt */
+    rotate: 600deg;
+    scale: 0;
   }
 }
+
+.forsvind_bad {
+  animation-name: forsvind_bad_kf;
+  animation-duration: 0.6s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+@keyframes forsvind_bad_kf {
+  20% {
+    scale: 1.5;
+  }
+  30% {
+    scale: 1;
+  }
+  100% {
+    scale: 0;
+  }
+}
+
 #time_board {
-  width: 7%;
+  width: 3%;
   position: absolute;
   aspect-ratio: 158/165;
-  background-image: url(/assets/ur.svg);
-  top: 10%;
-  left: 79%;
+  background-image: url(../assets/ur.svg);
+  top: 18%;
+  left: 18%;
   background-size: cover;
 }
 
