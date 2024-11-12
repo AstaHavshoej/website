@@ -271,10 +271,29 @@ article {
   background-image: url(../assets/mug_ost.svg);
   background-size: cover;
 }
+.pos1 {
+  left: 20%;
+}
+.pos2 {
+  left: 30%;
+}
+.pos3 {
+  left: 40%;
+}
+.pos4 {
+  left: 50%;
+}
+.pos5 {
+  left: 60%;
+}
+.pos {
+  left: 70%;
+}
+
 /* FALD ANIMATION */
 .fald {
   animation-name: fald_kf;
-  animation-duration: 3s;
+  animation-duration: 6s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
@@ -317,15 +336,32 @@ article {
 }
 
 #time_board {
-  width: 3%;
+  width: 7%;
   position: absolute;
   aspect-ratio: 158/165;
   background-image: url(../assets/ur.svg);
-  top: 18%;
-  left: 18%;
+  top: 10%;
+  left: 79%;
   background-size: cover;
 }
-
+#score_board {
+  font-size: 45px;
+  color: white;
+  transform: rotate(-10deg);
+  position: absolute;
+  top: 9.5%;
+  left: 15%;
+  background-size: cover;
+}
+#life_board {
+  font-size: 45px;
+  color: white;
+  transform: rotate(-10deg);
+  position: absolute;
+  top: 16.5%;
+  left: 15.5%;
+  background-size: cover;
+}
 /* UI */
 #game_ui {
   width: 100%;
@@ -334,4 +370,8 @@ article {
   top: 0;
   left: 0;
   pointer-events: none;
+}
+
+.frys {
+  animation-play-state: paused;
 }
