@@ -34,7 +34,7 @@ function startSpillet() {
   godOst.classList.add("pos1");
 
   mugOst.classList.add("fald");
-  mugOst.classList.add("pos5");
+  mugOst.classList.add("pos2");
 
   //   lyt efter at faldanimtion på gul ost har kørt én gang
   //   lyt efter at faldanimtion på grøn ost har kørt én gang
@@ -98,7 +98,7 @@ function badReset() {
 
   // Vis element igen
   //   Ny random position
-  mugOst.classList.add("pos5");
+  mugOst.classList.add("pos6");
   //   Genstart fald -animation
   mugOst.offsetLeft;
   mugOst.classList.add("fald");
