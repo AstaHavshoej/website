@@ -25,12 +25,11 @@ function startSpillet() {
   point = 0;
   console.log(point);
   document.querySelector("#score_board").innerHTML = point;
-
+  //  Skriv point og liv ud
   liv = 3;
   console.log(liv);
   document.querySelector("#life_board").innerHTML = liv;
 
-  //   Skriv point og liv ud
   //   Start timer -animation
   document.querySelector("#minut_viser").classList.add("minut_animation");
   document.querySelector("#time_viser").classList.add("time_animation");
