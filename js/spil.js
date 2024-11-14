@@ -1,10 +1,10 @@
 let score;
 let liv;
 
+window.addEventListener("load", sidenVises);
+const max = 6;
 const godOst = document.querySelector("#god_ost_container");
 const mugOst = document.querySelector("#mug_ost_container");
-
-window.addEventListener("load", sidenVises);
 
 function sidenVises() {
   console.log("SidenVises");
@@ -12,6 +12,10 @@ function sidenVises() {
   //   Vis start skærm
   //   Gør start-knap klikbar, klik på start/play
   startSpillet();
+}
+
+function nytRand(max) {
+  return Math.floor(Math.random() * max) + 1;
 }
 
 function startSpillet() {
@@ -28,13 +32,18 @@ function startSpillet() {
 
   //   Skriv point og liv ud
   //   Start timer -animation
+  document.querySelector("#minut_viser").classList.add("minut_animation");
+  document.querySelector("#time_viser").classList.add("time_animation");
+
   //   Random position og random delay
   //   Start fald -animationer på elementer
-  godOst.classList.add("fald");
-  godOst.classList.add("pos1");
+  godOst.classList.add("fald", "delay" + nytRand(5));
+  godOst.classList.add("pos" + nytRand(6));
 
-  mugOst.classList.add("fald");
+  mugOst.classList.add("fald", "delay" + nytRand(5));
   mugOst.classList.add("pos2");
+
+  // console.log("her er mit random delay", randomDelay);
 
   //   lyt efter at faldanimtion på gul ost har kørt én gang
   //   lyt efter at faldanimtion på grøn ost har kørt én gang
@@ -48,6 +57,7 @@ function startSpillet() {
 }
 
 //   Lyt efter om timeranimation er færdig
+document.querySelector("#minut_viser").addEventListener("animationend", stopSpillet);
 
 function clickGood() {
   console.log("clickGood");
@@ -71,7 +81,8 @@ function goodReset() {
 
   // Vis element igen
   //   Ny random position
-  godOst.classList.add("pos6");
+
+  godOst.classList.add("pos" + nytRand(6));
   //   Genstart fald -animation
   godOst.offsetLeft;
   godOst.classList.add("fald");
@@ -98,7 +109,8 @@ function badReset() {
 
   // Vis element igen
   //   Ny random position
-  mugOst.classList.add("pos6");
+  let myRand = Math.floor(Math.random() * max) + 1;
+  mugOst.classList.add("pos" + myRand);
   //   Genstart fald -animation
   mugOst.offsetLeft;
   mugOst.classList.add("fald");
