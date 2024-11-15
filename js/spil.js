@@ -1,4 +1,4 @@
-let score;
+let point;
 let liv;
 
 window.addEventListener("load", sidenVises);
@@ -33,6 +33,7 @@ function startSpillet() {
   //   Start timer -animation
   document.querySelector("#minut_viser").classList.add("minut_animation");
   document.querySelector("#time_viser").classList.add("time_animation");
+  document.querySelector("#time_board").addEventListener("animationend", stopSpillet);
 
   //   Random position og random delay
   //   Start fald -animationer på elementer
@@ -68,15 +69,18 @@ function clickGood() {
   //   Skriv point ud
   //   Afspil lyd good
   //   Start goodForsvind -animation
-  document.querySelector("#god_ost_sprite").classList.add("forsvind_good");
+  godOst.firstElementChild.classList.add("forsvind_good");
   //   lyt efter goodForsvind-animation er færdig
   godOst.addEventListener("animationend", goodReset);
+
+  //fjern event listener
+  godOst.removeEventListener("click", clickGood);
 }
 
 function goodReset() {
   console.log("goodReset");
   godOst.classList = "";
-  document.querySelector("#god_ost_sprite").classList = "";
+  godOst.firstElementChild.classList = "";
 
   // Vis element igen
   //   Ny random position
@@ -85,26 +89,38 @@ function goodReset() {
   //   Genstart fald -animation
   godOst.offsetLeft;
   godOst.classList.add("fald");
+
+  //add eventlistener igen
+  godOst.addEventListener("click", clickGood);
 }
 
 function clickBad() {
   console.log("clickBad");
   // mist et liv
   liv--;
-  document.querySelector("#life_board").textContent = liv;
+
+  //TJEK OM DER ER MERE END NUL LIV
+  if (liv <= 0) {
+    stopSpillet();
+  }
 
   //   Vis antal liv
+  document.querySelector("#life_board").textContent = liv;
+
   //   Afspil lyd bad
   //   badForsvind -animation
-  document.querySelector("#mug_ost_sprite").classList.add("forsvind_bad");
+  mugOst.firstElementChild.classList.add("forsvind_bad");
   //   lyt efter badForsvind-animation er færdig
   mugOst.addEventListener("animationend", badReset);
+
+  //fjern event listener
+  mugOst.removeEventListener("click", clickBad);
 }
 
 function badReset() {
   console.log("badReset");
   mugOst.classList = "";
-  document.querySelector("#mug_ost_sprite").classList = "";
+  mugOst.firstElementChild.classList = "";
 
   // Vis element igen
   //   Ny random position
@@ -113,10 +129,37 @@ function badReset() {
   //   Genstart fald -animation
   mugOst.offsetLeft;
   mugOst.classList.add("fald");
+
+  //add eventlistener igen
+  mugOst.addEventListener("click", clickBad);
 }
 
 function stopSpillet() {
   console.log("stopSpillet");
+
+  // stop timer
+  document.querySelector("#minut_viser").classList = "";
+  document.querySelector("#time_viser").classList = "";
+  document.querySelector("#time_board").removeEventListener("animationend", stopSpillet);
+
+  godOst.classList = "";
+  godOst.firstElementChild.classList = "";
+
+  godOst.removeEventListener("animationiteration", goodReset);
+  godOst.removeEventListener("animationend", goodReset);
+  godOst.removeEventListener("mousedown", clickGood);
+
+  if (liv <= 0) {
+    console.log("Du har tabt");
+    gameOver();
+  } else if (point >= 5) {
+    console.log("Du har vundet");
+    levelComplete();
+  } else {
+    console.log("Du har tabt");
+    gameOver();
+  }
+
   //Fjern alle animationer
   //   Fjern alle eventListerner-ere
   //   tjek om jeg har mere end 20 point

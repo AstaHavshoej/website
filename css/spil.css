@@ -464,7 +464,7 @@ article {
 
 .time_animation {
   animation-name: time_kf;
-  animation-duration: 5s;
+  animation-duration: 30s;
   animation-fill-mode: both;
   animation-timing-function: linear;
 }
