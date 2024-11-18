@@ -6,6 +6,9 @@ const max = 6;
 const godOst = document.querySelector("#god_ost_container");
 const mugOst = document.querySelector("#mug_ost_container");
 
+const godOst2 = document.querySelector("#god_ost_container2");
+const mugOst2 = document.querySelector("#mug_ost_container2");
+
 function sidenVises() {
   console.log("SidenVises");
   // Skjul andre skærme
@@ -38,30 +41,41 @@ function startSpillet() {
   //   Random position og random delay
   //   Start fald -animationer på elementer
   godOst.classList.add("fald", "delay" + nytRand(5));
+  godOst2.classList.add("fald", "delay" + nytRand(5));
   godOst.classList.add("pos" + nytRand(6));
+  godOst2.classList.add("pos" + nytRand(6));
 
   mugOst.classList.add("fald", "delay" + nytRand(5));
+  mugOst2.classList.add("fald", "delay" + nytRand(5));
   mugOst.classList.add("pos2");
+  mugOst2.classList.add("pos2");
 
   // console.log("her er mit random delay", randomDelay);
 
   //   lyt efter at faldanimtion på gul ost har kørt én gang
   //   lyt efter at faldanimtion på grøn ost har kørt én gang
   godOst.addEventListener("animationiteration", goodReset);
+  godOst2.addEventListener("animationiteration", goodReset);
+
   mugOst.addEventListener("animationiteration", badReset);
+  mugOst2.addEventListener("animationiteration", badReset);
 
   //   Gør gul ost klikbart
   //   gør grøn ost klikbart
   mugOst.addEventListener("click", clickBad);
+  mugOst2.addEventListener("click", clickBad);
+
   godOst.addEventListener("click", clickGood);
+  godOst2.addEventListener("click", clickGood);
 }
 
 //   Lyt efter om timeranimation er færdig
 document.querySelector("#minut_viser").addEventListener("animationend", stopSpillet);
 
+// ændrer alle god og dårlig til this, fordi jeg har fået flere elementer
 function clickGood() {
   console.log("clickGood");
-  godOst.classList.add("frys");
+  this.classList.add("frys");
 
   //   Få 1 point
   point++;
@@ -69,33 +83,43 @@ function clickGood() {
   //   Skriv point ud
   //   Afspil lyd good
   //   Start goodForsvind -animation
-  godOst.firstElementChild.classList.add("forsvind_good");
+  this.firstElementChild.classList.add("forsvind_good");
   //   lyt efter goodForsvind-animation er færdig
-  godOst.addEventListener("animationend", goodReset);
+  this.addEventListener("animationend", goodReset);
 
   //fjern event listener
-  godOst.removeEventListener("click", clickGood);
+  this.removeEventListener("click", clickGood);
 }
 
 function goodReset() {
   console.log("goodReset");
-  godOst.classList = "";
-  godOst.firstElementChild.classList = "";
+  this.classList = "";
+  this.firstElementChild.classList = "";
 
   // Vis element igen
   //   Ny random position
 
-  godOst.classList.add("pos" + nytRand(6));
+  this.classList.add("pos" + nytRand(6));
   //   Genstart fald -animation
-  godOst.offsetLeft;
-  godOst.classList.add("fald");
+  this.offsetLeft;
+  this.classList.add("fald");
 
   //add eventlistener igen
-  godOst.addEventListener("click", clickGood);
+  this.addEventListener("click", clickGood);
 }
 
 function clickBad() {
   console.log("clickBad");
+
+  //   Afspil lyd bad
+  //   badForsvind -animation
+  this.firstElementChild.classList.add("forsvind_bad");
+  //   lyt efter badForsvind-animation er færdig
+  this.addEventListener("animationend", badReset);
+
+  //fjern event listener
+  this.removeEventListener("click", clickBad);
+
   // mist et liv
   liv--;
 
@@ -106,32 +130,23 @@ function clickBad() {
 
   //   Vis antal liv
   document.querySelector("#life_board").textContent = liv;
-
-  //   Afspil lyd bad
-  //   badForsvind -animation
-  mugOst.firstElementChild.classList.add("forsvind_bad");
-  //   lyt efter badForsvind-animation er færdig
-  mugOst.addEventListener("animationend", badReset);
-
-  //fjern event listener
-  mugOst.removeEventListener("click", clickBad);
 }
 
 function badReset() {
   console.log("badReset");
-  mugOst.classList = "";
-  mugOst.firstElementChild.classList = "";
+  this.classList = "";
+  this.firstElementChild.classList = "";
 
   // Vis element igen
   //   Ny random position
   let myRand = Math.floor(Math.random() * max) + 1;
-  mugOst.classList.add("pos" + myRand);
+  this.classList.add("pos" + myRand);
   //   Genstart fald -animation
-  mugOst.offsetLeft;
-  mugOst.classList.add("fald");
+  this.offsetLeft;
+  this.classList.add("fald");
 
   //add eventlistener igen
-  mugOst.addEventListener("click", clickBad);
+  this.addEventListener("click", clickBad);
 }
 
 function stopSpillet() {
@@ -142,12 +157,35 @@ function stopSpillet() {
   document.querySelector("#time_viser").classList = "";
   document.querySelector("#time_board").removeEventListener("animationend", stopSpillet);
 
+  // god
   godOst.classList = "";
+  godOst2.classList = "";
   godOst.firstElementChild.classList = "";
+  godOst2.firstElementChild.classList = "";
 
   godOst.removeEventListener("animationiteration", goodReset);
+  godOst2.removeEventListener("animationiteration", goodReset);
+
   godOst.removeEventListener("animationend", goodReset);
+  godOst2.removeEventListener("animationend", goodReset);
+
   godOst.removeEventListener("mousedown", clickGood);
+  godOst2.removeEventListener("mousedown", clickGood);
+
+  // Dårlig
+  mugOst.classList = "";
+  mugOst2.classList = "";
+  mugOst.firstElementChild.classList = "";
+  mugOst2.firstElementChild.classList = "";
+
+  mugOst.removeEventListener("animationiteration", badReset);
+  mugOst2.removeEventListener("animationiteration", badReset);
+
+  mugOst.removeEventListener("animationend", badReset);
+  mugOst2.removeEventListener("animationend", badReset);
+
+  mugOst.removeEventListener("mousedown", clickBad);
+  mugOst2.removeEventListener("mousedown", clickBad);
 
   if (liv <= 0) {
     console.log("Du har tabt");
