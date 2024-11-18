@@ -14,7 +14,12 @@ function sidenVises() {
   // Skjul andre skærme
   //   Vis start skærm
   //   Gør start-knap klikbar, klik på start/play
-  startSpillet();
+
+  // startSpillet();
+
+  document.querySelector("#game_over").classList.add("hide");
+  document.querySelector("#level_complete").classList.add("hide");
+  document.querySelector("#play_knap").addEventListener("click", startSpillet);
 }
 
 function nytRand(max) {
@@ -24,6 +29,7 @@ function nytRand(max) {
 function startSpillet() {
   console.log("startSpillet");
   // skjul andre skærme
+
   //Nulstil point og liv
   point = 0;
   console.log(point);
@@ -67,10 +73,19 @@ function startSpillet() {
 
   godOst.addEventListener("click", clickGood);
   godOst2.addEventListener("click", clickGood);
-}
 
-//   Lyt efter om timeranimation er færdig
-document.querySelector("#minut_viser").addEventListener("animationend", stopSpillet);
+  //   Lyt efter om timeranimation er færdig
+  document.querySelector("#minut_viser").addEventListener("animationend", stopSpillet);
+
+  // HIDE ANDRE SKRÆRME OG GAME OVER
+  document.querySelector("#game_over").classList.add("hide");
+  document.querySelector("#igen_mug").classList.remove("hide");
+
+  document.querySelector("#level_complete").classList.add("hide");
+  document.querySelector("#igen_gul").classList.remove("hide");
+
+  document.querySelector("#start").classList.add("hide");
+}
 
 // ændrer alle god og dårlig til this, fordi jeg har fået flere elementer
 function clickGood() {
@@ -190,7 +205,7 @@ function stopSpillet() {
   if (liv <= 0) {
     console.log("Du har tabt");
     gameOver();
-  } else if (point >= 5) {
+  } else if (point >= 15) {
     console.log("Du har vundet");
     levelComplete();
   } else {
@@ -208,10 +223,17 @@ function gameOver() {
   console.log("gameOver");
   //   Vis gameover skærm
   //   gør "spil igen" klikbart
+  document.querySelector("#game_over").classList.remove("hide");
+
+  document.querySelector("#igen_mug").addEventListener("click", startSpillet);
 }
 
 function levelComplete() {
   console.log("levelComplete");
+  document.querySelector("#level_complete").classList.remove("hide");
+
+  document.querySelector("#igen_gul").addEventListener("click", startSpillet);
+
   //   Vis levelcomplete skærm
   //   gør "spil igen" klikbart
 }
