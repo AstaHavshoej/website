@@ -9,16 +9,15 @@
   <body>
     <header>
       <div class="logo">
-        <a href="/"> <img src="assets/logo.svg" alt="Logo" width= /> </a>
+        <a href="/"> <img src="assets/logo.svg" alt="Logo" /> </a>
       </div>
-
       <nav>
         <ul class="menu">
-          <a href="index.html">Hovedmenu</a>
-          <a href="spil.html">Spil</a>
-          <a href="grafik.html">Grafik</a>
-          <a href="assets.html">Assets</a>
-          <a href="teknik.html">Teknik</a>
+          <li><a href="index.html">Hovedmenu</a></li>
+          <li><a href="spil.html">Spil</a></li>
+          <li><a href="grafik.html">Grafik</a></li>
+          <li><a href="assets.html">Assets</a></li>
+          <li><a href="teknik.html">Teknik</a></li>
         </ul>
         <div class="burger">
           <div class="line"></div>
@@ -27,8 +26,6 @@
         </div>
       </nav>
     </header>
-    <!-- <h1>Spil</h1> -->
-
     <div id="screen">
       <div id="game">
         <div id="game_background"></div>
@@ -71,8 +68,14 @@
         <div id="igen_gul"></div>
       </div>
     </div>
-    <footer>Lavet af: Asta Havshøj</footer>
-
+    <div id="sounds">
+      <audio src="lyde/baggrund.mp3" id="musik"></audio>
+      <audio src="lyde/god_lyd.mp3" id="god_lyd"></audio>
+      <audio src="lyde/mug_lyd.mp3" id="mug_lyd"></audio>
+      <audio src="lyde/complete_lyd.mp3" id="complete_lyd"></audio>
+      <audio src="lyde/over_lyd.mp3" id="over_lyd"></audio>
+      <audio src="lyde/forside.mp3" id="forside"></audio>
+    </div>
     <script src="menu.js"></script>
     <script src="js/spil.js"></script>
   </body>

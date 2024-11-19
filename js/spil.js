@@ -11,11 +11,19 @@ const mugOst2 = document.querySelector("#mug_ost_container2");
 
 function sidenVises() {
   console.log("SidenVises");
+  // TAG STILLING TIL, HVAD DER SKAL SKE MED DENNE SANG
+  // document.querySelector("#forside").volume = 0.3;
+  // document.querySelector("#forside").play();
+
   // Skjul andre skærme
   //   Vis start skærm
   //   Gør start-knap klikbar, klik på start/play
 
   // startSpillet();
+
+  // afspil baggrundsmusik
+  // document.querySelector("#musik").volume = 0.3;
+  // document.querySelector("#musik").play();
 
   document.querySelector("#game_over").classList.add("hide");
   document.querySelector("#level_complete").classList.add("hide");
@@ -27,6 +35,9 @@ function nytRand(max) {
 }
 
 function startSpillet() {
+  // afspil baggrundsmusik
+  document.querySelector("#musik").volume = 0.3;
+  document.querySelector("#musik").play();
   console.log("startSpillet");
   // skjul andre skærme
 
@@ -96,7 +107,12 @@ function clickGood() {
   point++;
   document.querySelector("#score_board").textContent = point;
   //   Skriv point ud
+
   //   Afspil lyd good
+  document.querySelector("#god_lyd").volume = 1;
+  document.querySelector("#god_lyd").currentTime = 0;
+  document.querySelector("#god_lyd").play();
+
   //   Start goodForsvind -animation
   this.firstElementChild.classList.add("forsvind_good");
   //   lyt efter goodForsvind-animation er færdig
@@ -127,6 +143,10 @@ function clickBad() {
   console.log("clickBad");
 
   //   Afspil lyd bad
+  document.querySelector("#mug_lyd").volume = 0.5;
+  document.querySelector("#mug_lyd").currentTime = 0;
+  document.querySelector("#mug_lyd").play();
+
   //   badForsvind -animation
   this.firstElementChild.classList.add("forsvind_bad");
   //   lyt efter badForsvind-animation er færdig
@@ -224,11 +244,23 @@ function gameOver() {
   //   Vis gameover skærm
   //   gør "spil igen" klikbart
   document.querySelector("#game_over").classList.remove("hide");
-
   document.querySelector("#igen_mug").addEventListener("click", startSpillet);
+
+  document.querySelector("#musik").volume = 0.1;
+  document.querySelector("#musik").play();
+
+  document.querySelector("#over_lyd").volume = 1;
+  document.querySelector("#over_lyd").play();
 }
 
 function levelComplete() {
+  // baggrundsmusik
+  document.querySelector("#musik").volume = 0.1;
+  document.querySelector("#musik").play();
+
+  document.querySelector("#complete_lyd").volume = 1;
+  document.querySelector("#complete_lyd").play();
+
   console.log("levelComplete");
   document.querySelector("#level_complete").classList.remove("hide");
 

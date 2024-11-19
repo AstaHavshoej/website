@@ -297,6 +297,7 @@ article {
   width: 100%;
   aspect-ratio: 16/9;
   position: relative;
+  overflow: hidden;
 }
 
 #game {
@@ -321,19 +322,30 @@ article {
 
 .forside {
   position: relative; /* Sørg for, at vi kan placere elementer relativt til denne container */
+  overflow: hidden;
 }
 
 .play_forside {
   background-image: url(../assets/play_knap.svg);
   background-size: contain;
   background-repeat: no-repeat;
-  width: 300px;
-  height: 200px;
+  width: 20vw; /* Dynamisk bredde afhængig af viewport-bredden */
+  height: 13.33vw; /* Holder knappen i 3:2-forhold */
   position: absolute;
-  top: 27%;
-  left: 41%;
+  top: 27%; /* Juster placering relativt */
+  left: 41%; /* Juster placering relativt */
   color: transparent;
-  animation: hop 1s infinite; /* Kører animationen uendeligt */
+  animation: hop 1s infinite; /* Animationen kører konstant */
+}
+
+/* Tilpasning for mobilskærme */
+@media (max-width: 480px) {
+  .play_forside {
+    width: 40vw; /* Endnu større på mobil */
+    height: 26.67vw;
+    top: 35%; /* Juster placering */
+    left: 30%;
+  }
 }
 
 #game_over {
@@ -380,8 +392,7 @@ article {
   position: absolute;
   width: 10%;
   aspect-ratio: 255/175;
-  /* top: 
-  left: */
+  top: -20%;
 }
 #god_ost_sprite,
 #god_ost_sprite2 {
@@ -397,8 +408,7 @@ article {
   position: absolute;
   width: 10%;
   aspect-ratio: 90/62;
-  /* top: 56%; */
-  /* left: 68%; */
+  top: -20%;
 }
 #mug_ost_sprite,
 #mug_ost_sprite2 {
@@ -421,13 +431,13 @@ article {
   animation-delay: 0.2s;
 }
 .delay3 {
-  animation-delay: 1s;
+  animation-delay: 0.6s;
 }
 .delay4 {
-  animation-delay: 2s;
+  animation-delay: 0.8s;
 }
 .delay5 {
-  animation-delay: 3s;
+  animation-delay: 1s;
 }
 
 /* RANDOM POSITONER */
