@@ -10,7 +10,7 @@
   <body>
     <header>
       <div class="logo">
-        <a href="/"> <img src="assets/logo.svg" alt="Logo" /> </a>
+        <a href="index.html"> <img src="assets/logo.svg" alt="Logo" /> </a>
       </div>
       <nav>
         <ul class="menu">
@@ -74,7 +74,24 @@
         <div class="asset-item">
           <img src="assets/urskive.svg" alt="ur-timer" />
         </div>
+        <div class="asset-item">
+          <img src="assets/forside_knap.svg" alt="knap på forside" />
+        </div>
       </article>
+
+      <h2>Musik og lyde</h2>
+      <h3>Sang på forside</h3>
+      <audio src="lyde/forside.mp3" id="forside_lyd" controls></audio>
+      <h3>Baggrundsmusik i spil</h3>
+      <audio src="lyde/baggrund.mp3" id="musik" controls></audio>
+      <h3>Lyd ved klik på godt element</h3>
+      <audio src="lyde/god_lyd.mp3" id="god_lyd" controls></audio>
+      <h3>Lyd ved klik på dårligt element</h3>
+      <audio src="lyde/mug_lyd.mp3" id="mug_lyd" controls></audio>
+      <h3>Lyd ved Level Complete</h3>
+      <audio src="lyde/complete_lyd.mp3" id="complete_lyd" controls></audio>
+      <h3>Lyd ved Game Over</h3>
+      <audio src="lyde/over_lyd.mp3" id="over_lyd" controls></audio>
     </main>
     <footer>Lavet af: Asta Havshøj</footer>
     <script src="menu.js"></script>

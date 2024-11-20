@@ -12,7 +12,7 @@ img {
 }
 /*************** Menu ****************/
 
-/* BURGERMENU */
+/* HEADER */
 header {
   display: flex;
 
@@ -72,7 +72,7 @@ nav {
 .menu a:hover {
   color: rgb(243, 179, 60);
 }
-
+/* BURGER-MENU */
 .burger {
   width: 30px;
   height: 20px;
@@ -161,17 +161,52 @@ h3 {
   font-size: 1.5cqw;
   line-height: 1.5;
 }
-/* STYLING AF "ASSETS" SIDE */
+/* FORSIDE */
+.forside {
+  position: relative; /* Sørg for, at vi kan placere elementer relativt til denne container */
+  overflow: hidden;
+}
+/* STYLING AF KNAP PÅ FORSIDE */
+.play_forside {
+  background-image: url(../assets/forside_knap.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20vw; /* Dynamisk bredde afhængig af viewport-bredden */
+  height: 13.33vw; /* Holder knappen i 3:2-forhold */
+  position: absolute;
+  top: 27%; /* Juster placering relativt */
+  left: 41%; /* Juster placering relativt */
+  color: transparent;
+  animation: hop 1s infinite; /* Animationen kører konstant */
+}
 
+/* Tilpasning for mobilskærme */
+@media (max-width: 480px) {
+  .play_forside {
+    width: 40vw; /* Endnu større på mobil */
+    height: 26.67vw;
+    top: 35%; /* Juster placering */
+    left: 30%;
+  }
+}
+/*ASSETS */
 article {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px; /* Afstand mellem billederne */
   margin-bottom: 40px; /* Afstand mellem sektioner */
 }
-
-/* STYLING AF GRAFIK */
-
+.spil_elementer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 90%;
+}
+.ui_elementer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 90%;
+}
+/* GRAFIK */
 .stil-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -190,7 +225,7 @@ article {
   color: #f5ae14;
   text-decoration: none;
 }
-/* STYLING AF TEKNIK */
+/*TEKNIK */
 .aktivitetsdiagram {
   display: flex; /* Brug flexbox for at placere billedet og teksten side om side */
   justify-content: space-between; /* Giver lidt afstand mellem elementerne */
@@ -231,67 +266,7 @@ article {
   line-height: 1.5;
 }
 
-/* SPIL */
-.spil_elementer {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  width: 90%;
-}
-.ui_elementer {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  width: 90%;
-}
-
-#play_knap {
-  background-image: url(../assets/play_knap.svg);
-  aspect-ratio: 240/200;
-  width: 18%;
-  top: 60%;
-  left: 55%;
-  background-size: cover;
-  position: absolute;
-  transform: rotate(-10deg);
-  cursor: pointer;
-  animation: hop 1s infinite; /* Kører animationen uendeligt */
-}
-
-@keyframes hop {
-  0%,
-  100% {
-    transform: translateY(0); /* Start- og slutposition */
-  }
-  50% {
-    transform: translateY(-10px); /* Bevæger sig op */
-  }
-}
-
-#igen_gul {
-  background-image: url(../assets/igen_gul.svg);
-  aspect-ratio: 340/271;
-  background-size: cover;
-  width: 18%;
-  top: 58%;
-  left: 20%;
-  background-size: cover;
-  position: absolute;
-  transform: rotate(-10deg);
-  cursor: pointer;
-  animation: hop 1s infinite; /* Kører animationen uendeligt */
-}
-
-#igen_mug {
-  background-image: url(../assets/igen_mug.svg);
-  aspect-ratio: 323/255;
-  width: 18%;
-  top: 58%;
-  left: 55%;
-  background-size: cover;
-  position: absolute;
-  transform: rotate(-10deg);
-  cursor: pointer;
-  animation: hop 1s infinite; /* Kører animationen uendeligt */
-}
+/*************** SPIL CSS ****************/
 
 #screen {
   width: 100%;
@@ -317,35 +292,6 @@ article {
   left: 0;
   background-image: url(../assets/start_skaerm.svg);
   background-size: cover;
-  /* display: none; */
-}
-
-.forside {
-  position: relative; /* Sørg for, at vi kan placere elementer relativt til denne container */
-  overflow: hidden;
-}
-
-.play_forside {
-  background-image: url(../assets/play_knap.svg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 20vw; /* Dynamisk bredde afhængig af viewport-bredden */
-  height: 13.33vw; /* Holder knappen i 3:2-forhold */
-  position: absolute;
-  top: 27%; /* Juster placering relativt */
-  left: 41%; /* Juster placering relativt */
-  color: transparent;
-  animation: hop 1s infinite; /* Animationen kører konstant */
-}
-
-/* Tilpasning for mobilskærme */
-@media (max-width: 480px) {
-  .play_forside {
-    width: 40vw; /* Endnu større på mobil */
-    height: 26.67vw;
-    top: 35%; /* Juster placering */
-    left: 30%;
-  }
 }
 
 #game_over {
@@ -386,6 +332,7 @@ article {
   top: 0;
   left: 0;
 }
+
 /* GODT ELEMENT */
 #god_ost_container,
 #god_ost_container2 {
@@ -460,51 +407,57 @@ article {
   left: 70%;
 }
 
-/* FALD ANIMATION */
-.fald {
-  animation-name: fald_kf;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-@keyframes fald_kf {
-  100% {
-    translate: 0 1500%;
-  }
-}
-
-/* ANIMATIONER */
-.forsvind_good {
-  animation-name: forsvind_good_kf;
-  animation-duration: 0.6s;
-  animation-iteration-count: 1;
-  animation-timing-function: linear;
-}
-@keyframes forsvind_good_kf {
-  100% {
-    rotate: 600deg;
-    scale: 0;
-  }
+/* UI */
+#play_knap {
+  background-image: url(../assets/play_knap.svg);
+  aspect-ratio: 240/200;
+  width: 18%;
+  top: 60%;
+  left: 55%;
+  background-size: cover;
+  position: absolute;
+  transform: rotate(-10deg);
+  cursor: pointer;
+  animation: hop 1s infinite; /* Kører animationen uendeligt */
 }
 
-.forsvind_bad {
-  animation-name: forsvind_bad_kf;
-  animation-duration: 0.6s;
-  animation-iteration-count: 1;
-  animation-timing-function: linear;
-}
-@keyframes forsvind_bad_kf {
-  20% {
-    scale: 1.5;
-  }
-  30% {
-    scale: 1;
-  }
+@keyframes hop {
+  0%,
   100% {
-    scale: 0;
+    transform: translateY(0); /* Start- og slutposition */
   }
+  50% {
+    transform: translateY(-10px); /* Bevæger sig op */
+  }
+}
+/* "SPIL IGEN"-KNAP, GUL */
+#igen_gul {
+  background-image: url(../assets/igen_gul.svg);
+  aspect-ratio: 340/271;
+  background-size: cover;
+  width: 18%;
+  top: 58%;
+  left: 20%;
+  background-size: cover;
+  position: absolute;
+  transform: rotate(-10deg);
+  cursor: pointer;
+  animation: hop 1s infinite; /* Kører animationen uendeligt */
 }
 
+/* "SPIL IGEN"-KNAP, GRØN */
+#igen_mug {
+  background-image: url(../assets/igen_mug.svg);
+  aspect-ratio: 323/255;
+  width: 18%;
+  top: 58%;
+  left: 55%;
+  background-size: cover;
+  position: absolute;
+  transform: rotate(-10deg);
+  cursor: pointer;
+  animation: hop 1s infinite; /* Kører animationen uendeligt */
+}
 #score_board {
   font-size: 3cqw;
   color: white;
@@ -523,7 +476,6 @@ article {
   left: 15.5%;
   background-size: cover;
 }
-/* UI */
 #game_ui {
   width: 100%;
   height: 100%;
@@ -538,7 +490,6 @@ article {
 }
 
 /* UR */
-
 #ur {
   position: relative;
   margin: 5%;
@@ -600,16 +551,51 @@ article {
     background-color: red;
   }
 }
+/*************** ANIMATIOINER ****************/
+/* FALD */
+.fald {
+  animation-name: fald_kf;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@keyframes fald_kf {
+  100% {
+    translate: 0 1500%;
+  }
+}
 
-/* #time_board { */
-/* width: 7%;
-  position: absolute;
-  aspect-ratio: 158/165;
-  background-image: url(../assets/ur.svg);
-  top: 10%;
-  left: 79%;
-  background-size: cover; */
+/* FORSVIND */
+.forsvind_good {
+  animation-name: forsvind_good_kf;
+  animation-duration: 0.6s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+@keyframes forsvind_good_kf {
+  100% {
+    rotate: 600deg;
+    scale: 0;
+  }
+}
 
+.forsvind_bad {
+  animation-name: forsvind_bad_kf;
+  animation-duration: 0.6s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+@keyframes forsvind_bad_kf {
+  20% {
+    scale: 1.5;
+  }
+  30% {
+    scale: 1;
+  }
+  100% {
+    scale: 0;
+  }
+}
 .hide {
   display: none;
 }
